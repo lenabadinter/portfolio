@@ -116,15 +116,28 @@ var lppModule = (function () {
         document.querySelector("#lang-dropdown").classList.toggle("show-dropdown-content");
     }
 
+    function _setActiveMenuItem(event) {
+        let clickedNavItem = null;
+        if(event.target.tagName.toLowerCase() === 'a') {
+            clickedNavItem = event.target.parentElement;
+        }
+        else if(event.target.tagName.toLowerCase() === 'li') {
+            clickedNavItem = event.target;
+        }
+        let liItems  = clickedNavItem.parentElement.children;
+        for (let i = 0; i < liItems.length; i++) {
+            liItems[i].classList.remove('active');
+        }
+        clickedNavItem.classList.add('active');
+    }
+
     function _addClickOrTouchendEventListeners() {
         document.querySelector('.hamburger').addEventListener(_eventName, _toggleMenu, false);
         document.querySelector('.menu-overlay').addEventListener(_eventName, _toggleMenu, false);
         document.querySelector('.toggle-dropdown-btn').addEventListener(_eventName, _toggleLanguagesDropDown, false); 
         
-
-        var closeAlertButtons = document.querySelectorAll('.close-alert-button');
-        var i;
-        for (i = 0; i < closeAlertButtons.length; i++) {
+        const closeAlertButtons = document.querySelectorAll('.close-alert-button');
+        for (let i = 0; i < closeAlertButtons.length; i++) {
             closeAlertButtons[i].addEventListener(_eventName, _addCloseAlertEvent, false);
         }
 
@@ -135,6 +148,16 @@ var lppModule = (function () {
         const slideButtons = document.querySelectorAll('.slide-button');
         slideButtons.forEach(button => {
             button.addEventListener(_eventName, _moveSlides, false);
+        });
+
+        const desktopNavItems = document.querySelectorAll('.desktop-nav-item');
+        desktopNavItems.forEach(desktopNavItem => {
+            desktopNavItem.addEventListener(_eventName, _setActiveMenuItem, false);
+        });
+
+        const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+        mobileNavItems.forEach(mobileNavItem => {
+            mobileNavItem.addEventListener(_eventName, _setActiveMenuItem, false);
         });
     }
 
