@@ -151,7 +151,7 @@ var lppModule = (function () {
                 alert('Please fill in all fields');
             }
 
-            //contactForm.submit();
+            contactForm.submit();
         });
     }
 
