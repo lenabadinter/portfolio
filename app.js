@@ -11,6 +11,8 @@ var lppModule = (function () {
     const _PlatformTypeEnum = { "UNKNOWN": 0, "SAFARI_MOBILE": 1, "SAFARI_DESKTOP": 2, "MOBILE": 3, "DESKTOP": 4 }
     let _platformType = _PlatformTypeEnum.UNKNOWN;
     let _isMobile = false;
+    let _links = null;
+    const _sections = document.querySelectorAll('section');
 
     function _detectIsMobileBrowser() {
         const a = navigator.userAgent || navigator.vendor || window.opera;
@@ -62,6 +64,11 @@ var lppModule = (function () {
 
         document.querySelector('.hamburger').removeEventListener(_eventName, _toggleMenu, false);
         document.querySelector('.hamburger').addEventListener(_eventName, _toggleMenu, false);
+
+        let index = _sections.length;
+        while(--index && window.scrollY + 80 < _sections[index].offsetTop) {}
+        _links.forEach((link) => link.classList.remove('active'));
+        _links[index].classList.add('active');
     }
 
     function _addCloseAlertEvent(event) {
@@ -116,21 +123,6 @@ var lppModule = (function () {
         document.querySelector("#lang-dropdown").classList.toggle("show-dropdown-content");
     }
 
-    function _setActiveMenuItem(event) {
-        let clickedNavItem = null;
-        if(event.target.tagName.toLowerCase() === 'a') {
-            clickedNavItem = event.target.parentElement;
-        }
-        else if(event.target.tagName.toLowerCase() === 'li') {
-            clickedNavItem = event.target;
-        }
-        let liItems  = clickedNavItem.parentElement.children;
-        for (let i = 0; i < liItems.length; i++) {
-            liItems[i].classList.remove('active');
-        }
-        clickedNavItem.classList.add('active');
-    }
-
     function _addClickOrTouchendEventListeners() {
         document.querySelector('.hamburger').addEventListener(_eventName, _toggleMenu, false);
         document.querySelector('.menu-overlay').addEventListener(_eventName, _toggleMenu, false);
@@ -148,16 +140,6 @@ var lppModule = (function () {
         const slideButtons = document.querySelectorAll('.slide-button');
         slideButtons.forEach(button => {
             button.addEventListener(_eventName, _moveSlides, false);
-        });
-
-        const desktopNavItems = document.querySelectorAll('.desktop-nav-item');
-        desktopNavItems.forEach(desktopNavItem => {
-            desktopNavItem.addEventListener(_eventName, _setActiveMenuItem, false);
-        });
-
-        const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
-        mobileNavItems.forEach(mobileNavItem => {
-            mobileNavItem.addEventListener(_eventName, _setActiveMenuItem, false);
         });
     }
 
@@ -232,6 +214,15 @@ var lppModule = (function () {
 
     function _init() {
         _platformType = _getPlatformType();
+        if(_isMobile 
+            || _platformType === _PlatformTypeEnum.SAFARI_DESKTOP 
+            || _platformType === _PlatformTypeEnum.SAFARI_MOBILE) {
+            _links = document.querySelectorAll('.mobile-nav-item');
+        }
+        else {
+            _links = document.querySelectorAll('.desktop-nav-item');
+        }
+
         if(_platformType === _PlatformTypeEnum.SAFARI_DESKTOP || _platformType === _PlatformTypeEnum.SAFARI_MOBILE) {
             document.querySelector('body').classList.add('safari');
         }

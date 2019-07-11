@@ -19,7 +19,7 @@
 }
 
 /* 
-var(--header-bg-color) 
+var(--header-text-color) 
 var(--dark-section-text-color) 
 */
 
@@ -852,10 +852,13 @@ header nav ul li:hover:after, header nav ul .active:after {
     }
   
   /* Add a blue color to the author */
-  .testimonials-section .author {color: cornflowerblue; line-height: 1;}
-  .testimonials-section .role {
-      font-size: 1rem;
-  }
+  .testimonials-section .author {
+      color: var(--header-text-color); 
+      line-height: 1;
+    }
+    .testimonials-section .role {
+        font-size: 1rem;
+    }
 
   /******************** contact section *********************/
   .contact-section {
@@ -1137,7 +1140,7 @@ footer .highlighted-text {
     background: #ffc20f;
     bottom: 0;
     position: absolute;
-    width: 50%;
+    width: 20vw;
 }
 
 .hamburger {
