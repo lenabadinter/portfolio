@@ -322,10 +322,10 @@ input[type=name],
     margin-bottom: 8vh;
 }
 .safari .hero-section {
-    background-image: url(../images/bg.jpg);
+    background-image: url(images/bg.jpg);
 }
 .not-safari .hero-section {
-    background-image: url(../images/bg.jpg.webp);
+    background-image: url(images/bg.jpg.webp);
 }
 
 .hero-section .background-overlay {
