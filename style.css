@@ -882,7 +882,7 @@ input[type=name],
     width: 100%;
     position: absolute;
     left: 0;
-    top: 0;
+    top: -1px;
     line-height: 0;
 }
 
