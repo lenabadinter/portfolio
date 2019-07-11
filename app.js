@@ -18,6 +18,7 @@ var lppModule = (function () {
     }
 
     function _getPlatformType() {
+        return _PlatformTypeEnum.MOBILE;
         const ua = navigator.userAgent.toLowerCase();
         const isSafari = (ua.indexOf('safari') != -1) && (ua.indexOf('chrome') == -1);
         if (isSafari) {
