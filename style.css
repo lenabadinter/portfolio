@@ -869,7 +869,7 @@ input[type=name],
     background-size: cover;
     background-position: 0 100%;
     background-attachment: fixed;
-    background-image: url(../images/footer_bg.svg);
+    background-image: url(images/footer_bg.svg);
 }
 
 .contact-section .background-top-shape {
