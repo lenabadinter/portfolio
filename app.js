@@ -138,6 +138,23 @@ var lppModule = (function () {
         });
     }
 
+    function _addFormSubmitListeners() {
+        const contactForm = document.querySelector('#contact-form');
+        contactForm.addEventListener('submit', event => {
+            event.preventDefault();
+
+            const name = document.querySelector('#name').value;
+            const email = document.querySelector('#email').value;
+            const phone = document.querySelector('#phone').value;
+
+            if(name === '' || email === '' || phone === '') {
+                alert('Please fill in all fields');
+            }
+
+            //contactForm.submit();
+        });
+    }
+
     function _addScrollEventListeners() {
         window.addEventListener('scroll', _toggleScrolledClassOnScroll, false);
     }
@@ -194,6 +211,7 @@ var lppModule = (function () {
         _setClickOrTouchendEventName();
         _addScrollEventListeners();
         _addClickOrTouchendEventListeners();
+        _addFormSubmitListeners();
         _showSlides(_slideIndex);
         // _addEngagementModalEventListeners();
     }
