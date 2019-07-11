@@ -967,7 +967,6 @@ header nav ul li:hover:after, header nav ul .active:after {
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px var(--color-transparent-background);
 }
 
-/* xxx */
 .contact-section .content-container .bottom-contact-form .button {
     cursor: pointer;
     background-color: var(--dark-transparent-background);
@@ -991,13 +990,15 @@ header nav ul li:hover:after, header nav ul .active:after {
     margin-bottom: 20px;
 }
 .contact-section .content-container .my-contact-info li span {
-    padding: 0 10px 0 10px;
     color: var(--dark-section-text-color);
 }
 .contact-section .content-container .my-contact-info li a {
-    padding: 0 10px 0 10px;
     color: var(--dark-section-text-color);
     text-decoration: none;
+}
+
+.contact-section .content-container .my-contact-info .padding {
+    padding: 0 10px 0 10px;
 }
 
 .contact-section .contact-symbol-svg-fill {
@@ -1020,7 +1021,7 @@ footer {
     width: 100%;
     background-color: var(--header-bg-color);
     color: var(--dark-section-text-color);
-    height: 3.5rem;
+    height: 3rem;
     display: flex;
     align-items: center;
     justify-content: center;

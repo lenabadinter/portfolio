@@ -143,16 +143,31 @@ var lppModule = (function () {
         contactForm.addEventListener('submit', event => {
             event.preventDefault();
 
-            const name = document.querySelector('#name').value;
-            const email = document.querySelector('#email').value;
-            const phone = document.querySelector('#phone').value;
+            const email = contactForm.querySelector("input[name='email']").value;
 
-            if(name === '' || email === '' || phone === '') {
-                alert('Please fill in all fields');
+            if(email === '') {
+                alert('Please fill email address');
+                return;
             }
 
             contactForm.submit();
         });
+
+        const bottomContactForm = document.querySelector('#bottom-contact-form');
+        bottomContactForm.addEventListener('submit', event => {
+            event.preventDefault();
+           
+            const email = bottomContactForm.querySelector("input[name='email']").value;
+
+            if(email === '') {
+                alert('Please fill email address');
+                return;
+            }
+
+            bottomContactForm.submit();
+        });
+
+        
     }
 
     function _addScrollEventListeners() {
