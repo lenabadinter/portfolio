@@ -1197,10 +1197,10 @@ input[type=name],
     }
 
     .safari .hero-section {
-        background-image: url(../images/bg-small.jpg);
+        background-image: url(images/bg-small.jpg);
     }
     .not-safari .hero-section {
-        background-image: url(../images/bg-small.jpg.webp);
+        background-image: url(images/bg-small.jpg.webp);
     }
 
     .about-section .content-container {
