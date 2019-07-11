@@ -600,6 +600,7 @@ header nav ul li:hover:after, header nav ul .active:after {
         position: relative;
         color: var(--dark-section-text-color);
         width: 100%;
+        margin-top: 50px;
         margin-bottom: 15%;
         
         display: grid;
@@ -1140,7 +1141,7 @@ footer .highlighted-text {
     background: #ffc20f;
     bottom: 0;
     position: absolute;
-    width: 20vw;
+    width: 30vw;
 }
 
 .hamburger {
