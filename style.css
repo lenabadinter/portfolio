@@ -6,23 +6,16 @@
     --header-bg-color: #212121;
     --header-text-color: #FFC107;
     --header-text-hover-color: #1976d2;
-    
-
     --dark-section-text-color: #fff;
-
     --light-section-bg-color: #fff;
     --light-section-text-color: #000;
+    --hero-section-big-jpg-image: url(images/bg.jpg);
+    --hero-section-big-webp-image: url(images/bg.jpg.webp);
+    --hero-section-small-jpg-image: url(images/bg-small.jpg);
+    --hero-section-small-webp-image: url(images/bg-small.jpg.webp);
+    --footer-image: url(images/footer_bg.svg);
 
-    --button-bg-color: #f00;
-    --button-border-color: #fff;
-    --button-text-color: #fff;
 }
-
-/* 
-var(--header-text-color) 
-var(--dark-section-text-color) 
-*/
-
 
 * {
     box-sizing: border-box;
@@ -318,10 +311,10 @@ header nav ul li:hover:after, header nav ul .active:after {
     overflow: hidden;
 }
 .safari .hero-section {
-    background-image: url(images/bg.jpg);
+    background-image: var(--hero-section-big-jpg-image);
 }
 .not-safari .hero-section {
-    background-image: url(images/bg.jpg.webp);
+    background-image: var(--hero-section-big-webp-image);
 }
 
 .hero-section .background-overlay {
@@ -873,7 +866,7 @@ header nav ul li:hover:after, header nav ul .active:after {
     background-size: cover;
     background-position: 0 100%;
     background-attachment: fixed;
-    background-image: url(images/footer_bg.svg);
+    background-image: var(--footer-image);
     overflow: hidden;
     padding-bottom: 150px;
 }
@@ -1346,10 +1339,10 @@ footer .highlighted-text {
     }
 
     .safari .hero-section {
-        background-image: url(images/bg-small.jpg);
+        background-image: var(--hero-section-small-jpg-image);
     }
     .not-safari .hero-section {
-        background-image: url(images/bg-small.jpg.webp);
+        background-image: var(--hero-section-small-webp-image);
     }
 
     .about-section .content-container {
