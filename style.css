@@ -9,12 +9,12 @@
     --dark-section-text-color: #fff;
     --light-section-bg-color: #fff;
     --light-section-text-color: #000;
-    --hero-section-big-jpg-image: url(images/bg.jpg);
-    --hero-section-big-webp-image: url(images/bg.jpg.webp);
-    --hero-section-small-jpg-image: url(images/bg-small.jpg);
-    --hero-section-small-webp-image: url(images/bg-small.jpg.webp);
-    --footer-image: url(images/footer_bg.svg);
-
+    --hero-section-big-jpg-image: url(images/bg-min.jpg);
+    --hero-section-big-webp-image: url(images/bg-min.jpg.webp);
+    --hero-section-small-jpg-image: url(images/bg-small-min.jpg);
+    --hero-section-small-webp-image: url(images/bg-small-min.jpg.webp);
+    --footer-png-image: url(images/footer-bg-min.png);
+    --footer-webp-image: url(images/footer-bg-min.png.webp);
 }
 
 * {
@@ -869,6 +869,13 @@ header nav ul li:hover:after, header nav ul .active:after {
     background-image: var(--footer-image);
     overflow: hidden;
     padding-bottom: 150px;
+}
+
+.safari .contact-section {
+    background-image: var(--footer-png-image);
+}
+.not-safari .contact-section {
+    background-image: var(--footer-webp-image);
 }
 
 .contact-section .background-top-shape {
