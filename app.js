@@ -212,6 +212,10 @@ var lppModule = (function () {
         }
     }
 
+    function _getFileExtension(fileName) {
+        return fileName.split('.').pop();
+    }
+
     function _init() {
         _platformType = _getPlatformType();
         if(_isMobile 
@@ -241,69 +245,55 @@ var lppModule = (function () {
         _addScrollEventListeners();
         _addClickOrTouchendEventListeners();
 
-        /***********************************************/
-        // function _loadBigImage(event) {
-        //     debugger;
-        // }
-
-        // debugger;
-        // const asyncImages = document.querySelectorAll('.async-image2');
-        // asyncImages.forEach(asyncImage => {
-                
-            
-        // });
-
-        function _getFileExtension(fileName) {
-            return fileName.split('.').pop();
-        }
-
         document.addEventListener("DOMContentLoaded", function () {
-            const asyncImages = document.querySelectorAll('.async-image');
-            Array.from(asyncImages).map((asyncImage) => {
-                // Start loading image
-                const img = new Image();
-                
-                let imageUrl = '';
-                let pictureImg = '';
-                
-                if(asyncImage.nodeName === 'PICTURE') {
-                    pictureImg = asyncImage.querySelector('img');
-                    imageUrl = pictureImg.currentSrc; 
-                }
-                else {
-                    const style = asyncImage.currentStyle || window.getComputedStyle(asyncImage, false);
-                    imageUrl = style.backgroundImage.match(/\((.*?)\)/)[1].replace(/('|")/g,'');
-                }
-                imageUrl = imageUrl.replace('-min', '');
-
-                img.addEventListener("load", (event) => {
-                    asyncImage.classList.remove('async-image');
-                    let pictureSrcType = '';
+            setTimeout(() => {
+                const asyncImages = document.querySelectorAll('.async-image');
+                Array.from(asyncImages).map((asyncImage) => {
+                    // Start loading image
+                    const img = new Image();
+                    
+                    let imageUrl = '';
+                    let pictureImg = '';
+                    
                     if(asyncImage.nodeName === 'PICTURE') {
-                        const extension = _getFileExtension(imageUrl);
-                        switch(extension) {
-                            case 'webp':
-                                pictureSrcType = 'image/webp';
-                                break;
-                            case 'jpg':
-                                pictureSrcType = 'image/jpg';
-                                break;
-                            case 'png':
-                                pictureSrcType = 'image/png';
-                                break;
-                        }
-                        const pictureSrc = asyncImage.querySelector(`source[type="${pictureSrcType}"]`);
-                        pictureSrc.srcset = imageUrl;
+                        pictureImg = asyncImage.querySelector('img');
+                        imageUrl = pictureImg.currentSrc; 
                     }
                     else {
-                        asyncImage.style.backgroundImage = `url(${imageUrl})`
+                        const style = asyncImage.currentStyle || window.getComputedStyle(asyncImage, false);
+                        imageUrl = style.backgroundImage.match(/\((.*?)\)/)[1].replace(/('|")/g,'');
                     }
+                    imageUrl = imageUrl.replace('-min', '');
+    
+                    img.addEventListener("load", (event) => {
+                        asyncImage.classList.remove('async-image');
+                        let pictureSrcType = '';
+                        if(asyncImage.nodeName === 'PICTURE') {
+                            const extension = _getFileExtension(imageUrl);
+                            switch(extension) {
+                                case 'webp':
+                                    pictureSrcType = 'image/webp';
+                                    break;
+                                case 'jpg':
+                                    pictureSrcType = 'image/jpg';
+                                    break;
+                                case 'png':
+                                    pictureSrcType = 'image/png';
+                                    break;
+                            }
+                            const pictureSrc = asyncImage.querySelector(`source[type="${pictureSrcType}"]`);
+                            pictureSrc.srcset = imageUrl;
+                        }
+                        else {
+                            asyncImage.style.backgroundImage = `url(${imageUrl})`
+                        }
+                    });
+    
+                    img.src = imageUrl;
                 });
-
-                img.src = imageUrl;
-            });
+            }, 0);
         });
-/***********************************************/
+
         _addFormSubmitListeners();
         _showSlides(_slideIndex);
         // _addEngagementModalEventListeners();
