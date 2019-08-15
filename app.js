@@ -128,7 +128,7 @@ var lppModule = (function () {
     function _addClickOrTouchendEventListeners() {
         window.addEventListener('DOMContentLoaded', (event) => {
             console.log('DOM fully loaded and parsed');
-            var googleAnalytics = document.createElement("script");
+            let googleAnalytics = document.createElement("script");
             googleAnalytics.async = true;
             googleAnalytics.src = `https://www.googletagmanager.com/gtag/js?id=${_googleAnalyticsKey}`;
             googleAnalytics.onload = googleAnalytics.onreadystatechange = function () {
@@ -140,6 +140,7 @@ var lppModule = (function () {
                     gtag('config', _googleAnalyticsKey);
                 }
             };
+            document.getElementsByTagName('head')[0].appendChild(googleAnalytics);
         });
 
         document.querySelector('.hamburger').addEventListener(_eventName, _toggleMenu, false);
