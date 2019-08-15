@@ -6,6 +6,8 @@ var lppModule = (function () {
     let _mouseY = 0;
     let _popupCounter = 0;
     let _slideIndex = 1;
+    let _isGoogleAnalyticsInitialized = false;
+    const _googleAnalyticsKey = 'UA-145776029-1';
     const _modal = document.querySelector("#modal");
 
     const _PlatformTypeEnum = { "UNKNOWN": 0, "SAFARI_MOBILE": 1, "SAFARI_DESKTOP": 2, "MOBILE": 3, "DESKTOP": 4 }
@@ -124,6 +126,22 @@ var lppModule = (function () {
     }
 
     function _addClickOrTouchendEventListeners() {
+        window.addEventListener('DOMContentLoaded', (event) => {
+            console.log('DOM fully loaded and parsed');
+            var googleAnalytics = document.createElement("script");
+            googleAnalytics.async = true;
+            googleAnalytics.src = `https://www.googletagmanager.com/gtag/js?id=${_googleAnalyticsKey}`;
+            googleAnalytics.onload = googleAnalytics.onreadystatechange = function () {
+                if ((this.readyState == 'loaded' || this.readyState == 'complete' || typeof this.readyState == "undefined") && !_isGoogleAnalyticsInitialized) {
+                    _isGoogleAnalyticsInitialized = true;
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', _googleAnalyticsKey);
+                }
+            };
+        });
+
         document.querySelector('.hamburger').addEventListener(_eventName, _toggleMenu, false);
         document.querySelector('.menu-overlay').addEventListener(_eventName, _toggleMenu, false);
         document.querySelector('.toggle-dropdown-btn').addEventListener(_eventName, _toggleLanguagesDropDown, false); 
