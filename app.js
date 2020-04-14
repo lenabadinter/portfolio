@@ -43,6 +43,9 @@ var lppModule = (function() {
       if (ua.match(/ipad/i)) {
         return _PlatformTypeEnum.SAFARI_DESKTOP;
       } else {
+        if (navigator.vendor.toLowerCase() === 'apple computer, inc.') {
+          return _PlatformTypeEnum.SAFARI_DESKTOP;
+        }
         return _PlatformTypeEnum.SAFARI_MOBILE;
       }
     } else {
