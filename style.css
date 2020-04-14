@@ -316,6 +316,18 @@ header nav ul li:hover:after, header nav ul .active:after {
 .not-safari .hero-section {
     background-image: var(--hero-section-big-webp-image);
 }
+.safari .reg-picture {
+    display: none;
+}
+.not-safari .reg-picture {
+    display: block;
+}
+.safari .jpg-picture {
+    display: block;
+}
+.not-safari .jpg-picture {
+    display: none;
+}
 
 .hero-section .background-overlay {
     height: 100%;
