@@ -273,7 +273,7 @@ header nav ul li:hover:after, header nav ul .active:after {
     height: 0;
     position: absolute;
     background-color: var(--dark-section-text-color);
-    min-width: 100px;
+    min-width: 121px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 23;
